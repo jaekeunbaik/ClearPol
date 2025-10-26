@@ -4,3 +4,38 @@
 @tailwind utilities;
 
 /* ClearPol 커스텀 스타일 */
+@layer base {
+  body {
+    @apply bg-slate-50 text-charcoal-900 font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-charcoal-900;
+  }
+}
+
+@layer components {
+  /* 버튼 스타일 */
+  .btn-primary {
+    @apply px-6 py-2.5 bg-charcoal-900 text-white rounded-lg hover:bg-charcoal-800 
+           transition-all duration-200 font-medium shadow-sm hover:shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-2.5 bg-white text-charcoal-700 border border-charcoal-300 
+           rounded-lg hover:bg-slate-50 transition-all duration-200 font-medium;
+  }
+  
+  /* 카드 스타일 */
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-slate-200 
+           hover:shadow-md transition-shadow duration-200;
+  }
+  
+  /* 입력 필드 */
+  .input-field {
+    @apply w-full px-4 py-2.5 border border-slate-300 rounded-lg 
+           focus:ring-2 focus:ring-charcoal-600 focus:border-transparent 
+           transition-all duration-200 placeholder-slate-400;
+  }
+}

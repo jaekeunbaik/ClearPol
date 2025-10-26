@@ -1,31 +1,23 @@
 <template>
-    <div class="min-h-screen bg-gray-50">
-        <!-- 헤더 -->
-        <header class="bg-white shadow-sm border-b">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center py-4">
-                    <h1 class="text-2xl font-bold text-gray-900">ClearPol</h1>
-                    <nav class="flex space-x-4">
-                        <router-link to="/login" class="text-gray-600 hover:text-gray-900">로그인</router-link>
-                        <router-link to="/signup"
-                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">회원가입</router-link>
-                    </nav>
-                </div>
-            </div>
-        </header>
-
+    <div class="bg-slate-50 py-12">
         <!-- 메인 컨텐츠 -->
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 제목 -->
+            <div class="mb-12 text-center">
+                <h1 class="text-4xl font-bold text-charcoal-900 mb-4">정치인 정보</h1>
+                <p class="text-lg text-slate-600">투명한 정치인 정보를 확인하세요</p>
+            </div>
+
             <!-- 검색 및 필터 -->
-            <div class="mb-8 bg-white p-6 rounded-lg shadow">
+            <div class="mb-10 card p-6">
                 <div class="flex flex-col md:flex-row gap-4">
                     <div class="flex-1">
                         <input v-model="searchQuery" type="text" placeholder="정치인 이름으로 검색..."
-                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            class="input-field">
                     </div>
-                    <div class="flex gap-2">
+                    <div class="flex gap-3">
                         <select v-model="selectedParty"
-                            class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                            class="input-field w-48">
                             <option value="">전체 정당</option>
                             <option value="더불어민주당">더불어민주당</option>
                             <option value="국민의힘">국민의힘</option>
@@ -33,7 +25,7 @@
                             <option value="무소속">무소속</option>
                         </select>
                         <select v-model="selectedRegion"
-                            class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                            class="input-field w-48">
                             <option value="">전체 지역</option>
                             <option value="서울">서울</option>
                             <option value="부산">부산</option>
@@ -51,35 +43,39 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <div v-for="politician in filteredPoliticians" :key="politician.id"
                     @click="goToPoliticianDetail(politician.id)"
-                    class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow cursor-pointer overflow-hidden">
+                    class="card cursor-pointer group">
                     <div class="p-6">
                         <!-- 프로필 이미지 -->
-                        <div class="w-20 h-20 mx-auto mb-4 bg-gray-200 rounded-full flex items-center justify-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-slate-200 rounded-full flex items-center justify-center overflow-hidden">
                             <img v-if="politician.photo_url" :src="politician.photo_url" :alt="politician.name"
-                                class="w-full h-full object-cover rounded-full">
-                            <span v-else class="text-gray-500 text-sm">사진</span>
+                                class="w-full h-full object-cover">
+                            <span v-else class="text-slate-400 text-sm">👤</span>
                         </div>
 
                         <!-- 정치인 정보 -->
                         <div class="text-center">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ politician.name }}</h3>
-                            <p class="text-sm text-blue-600 mb-1">{{ politician.party }}</p>
-                            <p class="text-sm text-gray-500">{{ politician.region }}</p>
+                            <h3 class="text-lg font-bold text-charcoal-900 mb-2 group-hover:text-charcoal-700 transition-colors">
+                                {{ politician.name }}
+                            </h3>
+                            <p class="text-sm font-semibold text-slate-700 mb-1">{{ politician.party }}</p>
+                            <p class="text-sm text-slate-500">{{ politician.region }}</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- 로딩 상태 -->
-            <div v-if="loading" class="text-center py-12">
-                <p class="text-gray-500">정치인 정보를 불러오는 중...</p>
+            <div v-if="loading" class="text-center py-16">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-charcoal-900"></div>
+                <p class="text-slate-600 mt-4">정치인 정보를 불러오는 중...</p>
             </div>
 
             <!-- 빈 상태 -->
-            <div v-if="!loading && filteredPoliticians.length === 0" class="text-center py-12">
-                <p class="text-gray-500">검색 결과가 없습니다.</p>
+            <div v-if="!loading && filteredPoliticians.length === 0" class="text-center py-16">
+                <div class="text-6xl mb-4">📭</div>
+                <p class="text-slate-600 text-lg">검색 결과가 없습니다.</p>
             </div>
-        </main>
+        </div>
     </div>
 </template>
 

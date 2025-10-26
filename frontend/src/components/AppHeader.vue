@@ -39,7 +39,7 @@
         </nav>
 
         <!-- 모바일 메뉴 버튼 -->
-        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-slate-600 hover:text-slate-900 p-2">
+        <button @click="toggleMobileMenu" class="md:hidden text-slate-600 hover:text-slate-900 p-2">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16"></path>
@@ -52,24 +52,24 @@
       <!-- 모바일 메뉴 -->
       <div v-if="mobileMenuOpen" class="md:hidden py-4 border-t border-slate-200">
         <nav class="flex flex-col space-y-2">
-          <router-link to="/" @click="mobileMenuOpen = false" class="px-4 py-2 rounded-lg transition-colors"
+          <router-link to="/" @click="closeMobileMenu" class="px-4 py-2 rounded-lg transition-colors"
             :class="$route.path === '/' ? 'text-blue-600 font-medium bg-blue-50' : 'text-slate-600 hover:bg-slate-100'">
             홈
           </router-link>
-          <router-link to="/politicians" @click="mobileMenuOpen = false" class="px-4 py-2 rounded-lg transition-colors"
+          <router-link to="/politicians" @click="closeMobileMenu" class="px-4 py-2 rounded-lg transition-colors"
             :class="$route.path === '/politicians' ? 'text-blue-600 font-medium bg-blue-50' : 'text-slate-600 hover:bg-slate-100'">
             정치인 보기
           </router-link>
-          <router-link to="/admin" @click="mobileMenuOpen = false" class="px-4 py-2 rounded-lg transition-colors"
+          <router-link to="/admin" @click="closeMobileMenu" class="px-4 py-2 rounded-lg transition-colors"
             :class="$route.path === '/admin' ? 'text-blue-600 font-medium bg-blue-50' : 'text-slate-600 hover:bg-slate-100'">
             관리자
           </router-link>
           <div class="h-px bg-slate-200 my-2"></div>
-          <router-link to="/login" @click="mobileMenuOpen = false"
+          <router-link to="/login" @click="closeMobileMenu"
             class="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
             로그인
           </router-link>
-          <router-link to="/signup" @click="mobileMenuOpen = false"
+          <router-link to="/signup" @click="closeMobileMenu"
             class="mx-4 px-4 py-2 rounded-lg bg-blue-600 text-white text-center hover:bg-blue-700 transition-colors">
             회원가입
           </router-link>
@@ -83,4 +83,12 @@
 import { ref } from 'vue';
 
 const mobileMenuOpen = ref(false);
+
+const toggleMobileMenu = () => {
+  mobileMenuOpen.value = !mobileMenuOpen.value;
+};
+
+const closeMobileMenu = () => {
+  mobileMenuOpen.value = false;
+};
 </script>

@@ -1,0 +1,28 @@
+debugger; /* PartiallyEnd: #3632/scriptSetup.vue */
+const __VLS_ctx = {};
+let __VLS_elements;
+let __VLS_components;
+let __VLS_directives;
+/** @type {__VLS_StyleScopedClasses['item']} */ ;
+/** @type {__VLS_StyleScopedClasses['item']} */ ;
+/** @type {__VLS_StyleScopedClasses['item']} */ ;
+/** @type {__VLS_StyleScopedClasses['item']} */ ;
+/** @type {__VLS_StyleScopedClasses['item']} */ ;
+__VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+    ...{ class: "item" },
+});
+__VLS_asFunctionalElement(__VLS_elements.i, __VLS_elements.i)({});
+var __VLS_0 = {};
+__VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+    ...{ class: "details" },
+});
+__VLS_asFunctionalElement(__VLS_elements.h3, __VLS_elements.h3)({});
+var __VLS_2 = {};
+var __VLS_4 = {};
+/** @type {__VLS_StyleScopedClasses['item']} */ ;
+/** @type {__VLS_StyleScopedClasses['details']} */ ;
+// @ts-ignore
+var __VLS_1 = __VLS_0, __VLS_3 = __VLS_2, __VLS_5 = __VLS_4;
+const __VLS_base = (await import('vue')).defineComponent({});
+const __VLS_export = {};
+export default {};

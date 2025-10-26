@@ -1,10 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        // 어반 컬러 팔레트
         charcoal: {
           50: '#f5f5f5',
           100: '#e5e5e5',

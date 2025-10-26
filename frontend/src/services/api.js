@@ -1,5 +1,5 @@
-import axios from 'axios';
+import axios from 'axios'
 const api = axios.create({
-    baseURL: 'http://localhost:3000', // 백엔드 주소
-});
-export default api;
+  baseURL: 'https://clearpol.onrender.com', // 백엔드 주소
+})
+export default api
